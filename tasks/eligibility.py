@@ -6,10 +6,11 @@ def compute_age(dob):
     dob = datetime.strptime(dob, "%Y-%m-%d")
     return relativedelta(datetime.now(), dob).years
 
-def eligibility_check(df):
+def eligibility_check(context):
+    df = context.df
     df["age"] = df["date_of_birth"].apply(compute_age)
 
-    invalid = df[(df["age"] <= 17) | (df["user_status"] != "active")]
+    invalid = df[(df["age"] <= 17) | (df["user_status"] != "T")]
 
     passed = len(invalid) == 0
 
