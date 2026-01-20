@@ -4,10 +4,10 @@ from datetime import datetime
 
 email_re = re.compile(r"[^@]+@[^@]+\.[^@]+")
 
-def anomalies_check(df):
+def anomalies_check(context):
+    df = context.df
+    
     anomalies = {}
-
-    # nulls
     nulls = df.isna().sum().to_dict()
     anomalies["null_counts"] = nulls
 
@@ -23,10 +23,6 @@ def anomalies_check(df):
         if signup <= dob:
             paradox.append(r["customer_id"])
     anomalies["signup_before_birth"] = paradox
-
-    # unrealistic ages
-    # e.g. > 120 years old
-    # needs DOB check like eligibility but you get the idea
 
     return ValidationResult(
         "anomalies",

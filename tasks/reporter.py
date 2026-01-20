@@ -1,6 +1,6 @@
-def report(results):
+def report(context):
     print("\n==== DQC REPORT ====\n")
-    for name, res in results.items():
+    for name, res in context.results.items():
         if name == "report":
             continue
         print(f"[{name.upper()}]")

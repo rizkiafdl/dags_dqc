@@ -7,3 +7,4 @@ class ValidationResult:
 
     def __repr__(self):
         return f"{self.name}(passed={self.passed}, metrics={self.metrics})"
+
