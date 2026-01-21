@@ -10,7 +10,7 @@ TASKS = {
     "report": report
 }
 
-# uniqueness -> eligibility -> report
+# uniqueness -> eligibility -> anomalies_check -> report
 DEPS = {
     "eligibility": ["uniqueness"],
     "anomalies_check" :["eligibility"],
